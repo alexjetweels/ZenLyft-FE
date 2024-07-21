@@ -10,8 +10,15 @@ import { NAV, HEADER } from './config-layout';
 
 const SPACING = 8;
 
-export default function Main({ children, sx, ...other }) {
-  const lgUp = useResponsive('up', 'lg');
+export default function Main({
+  children,
+  sx,
+  ...other
+}: {
+  children: React.ReactNode;
+  sx?: object;
+}) {
+  const lgUp = useResponsive('up', 'lg', 'xs');
 
   return (
     <Box
