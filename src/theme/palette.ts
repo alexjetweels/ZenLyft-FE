@@ -1,11 +1,15 @@
-import { alpha, PaletteOptions } from '@mui/material/styles';
+import { alpha } from '@mui/material/styles';
+import { Color, Palette, TypeAction, createTheme, TypeBackground } from '@mui/material';
 
 // ----------------------------------------------------------------------
 
 // SETUP COLORS
-
-export const grey = {
+interface ExtendedColor extends Color {
+  0: string;
+}
+export const grey: ExtendedColor = {
   0: '#FFFFFF',
+  50: '#F9FAFB',
   100: '#F9FAFB',
   200: '#F4F6F8',
   300: '#DFE3E8',
@@ -15,9 +19,22 @@ export const grey = {
   700: '#454F5B',
   800: '#212B36',
   900: '#161C24',
+  A100: '#000000', // Placeholder, as grey typically does not have accent colors
+  A200: '#000000', // Placeholder
+  A400: '#000000', // Placeholder
+  A700: '#000000', // Placeholder
 };
 
-export const primary = {
+export type ExtendedPaletteColor = {
+  lighter: string;
+  light: string;
+  main: string;
+  dark: string;
+  darker: string;
+  contrastText: string;
+};
+
+export const primary: ExtendedPaletteColor = {
   lighter: '#D0ECFE',
   light: '#73BAFB',
   main: '#1877F2',
@@ -26,7 +43,7 @@ export const primary = {
   contrastText: '#FFFFFF',
 };
 
-export const secondary = {
+export const secondary: ExtendedPaletteColor = {
   lighter: '#EFD6FF',
   light: '#C684FF',
   main: '#8E33FF',
@@ -35,7 +52,7 @@ export const secondary = {
   contrastText: '#FFFFFF',
 };
 
-export const info = {
+export const info: ExtendedPaletteColor = {
   lighter: '#CAFDF5',
   light: '#61F3F3',
   main: '#00B8D9',
@@ -44,7 +61,7 @@ export const info = {
   contrastText: '#FFFFFF',
 };
 
-export const success = {
+export const success: ExtendedPaletteColor = {
   lighter: '#C8FAD6',
   light: '#5BE49B',
   main: '#00A76F',
@@ -53,7 +70,7 @@ export const success = {
   contrastText: '#FFFFFF',
 };
 
-export const warning = {
+export const warning: ExtendedPaletteColor = {
   lighter: '#FFF5CC',
   light: '#FFD666',
   main: '#FFAB00',
@@ -62,7 +79,7 @@ export const warning = {
   contrastText: grey[800],
 };
 
-export const error = {
+export const error: ExtendedPaletteColor = {
   lighter: '#FFE9D5',
   light: '#FFAC82',
   main: '#FF5630',
@@ -76,7 +93,8 @@ export const common = {
   white: '#FFFFFF',
 };
 
-export const action = {
+export const action: TypeAction = {
+  ...createTheme().palette.action,
   hover: alpha(grey[500], 0.08),
   selected: alpha(grey[500], 0.16),
   disabled: alpha(grey[500], 0.8),
@@ -87,6 +105,7 @@ export const action = {
 };
 
 const base = {
+  ...createTheme().palette,
   primary,
   secondary,
   info,
@@ -101,7 +120,23 @@ const base = {
 
 // ----------------------------------------------------------------------
 
-export function palette(): PaletteOptions {
+// Extend TypeBackground to include the neutral property
+interface ExtendedTypeBackground extends TypeBackground {
+  neutral: string;
+}
+
+// Use ExtendedTypeBackground in your custom Palette type
+export interface ExtendedPalette extends Palette {
+  primary: ExtendedPaletteColor,
+  secondary: ExtendedPaletteColor,
+  info: ExtendedPaletteColor,
+  success: ExtendedPaletteColor,
+  warning: ExtendedPaletteColor,
+  error: ExtendedPaletteColor,
+  background: ExtendedTypeBackground;
+}
+
+export function palette() : ExtendedPalette {
   return {
     ...base,
     mode: 'light',

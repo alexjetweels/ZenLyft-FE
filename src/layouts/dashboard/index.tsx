@@ -25,7 +25,7 @@ export default function DashboardLayout({ children }: { children: React.ReactNod
       >
         <Nav openNav={openNav} onCloseNav={() => setOpenNav(false)} />
 
-        <Main>{children}</Main>
+        <Main sx={undefined}>{children}</Main>
       </Box>
     </>
   );
