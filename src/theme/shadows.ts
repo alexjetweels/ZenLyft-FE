@@ -1,10 +1,10 @@
-import { alpha } from '@mui/material/styles';
+import { alpha, Shadows } from '@mui/material/styles';
 
-import { grey } from './palette';
+import { grey } from './palette.ts';
 
 // ----------------------------------------------------------------------
 
-export function shadows() {
+export function shadows(): Shadows {
   const transparent1 = alpha(grey[500], 0.2);
   const transparent2 = alpha(grey[500], 0.14);
   const transparent3 = alpha(grey[500], 0.12);
