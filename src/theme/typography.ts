@@ -1,5 +1,8 @@
 // ----------------------------------------------------------------------
 
+import { CustomTypographyOptions } from '@mui/material';
+import { TypographyOptions } from '@mui/material/styles/createTypography';
+
 export function remToPx(value: string) {
   return Math.round(parseFloat(value) * 16);
 }
@@ -27,7 +30,7 @@ export const secondaryFont = 'Barlow, sans-serif';
 
 // ----------------------------------------------------------------------
 
-export const typography = {
+export const typography: CustomTypographyOptions = {
   fontFamily: primaryFont,
   fontSecondaryFamily: secondaryFont,
   fontWeightRegular: 400,
