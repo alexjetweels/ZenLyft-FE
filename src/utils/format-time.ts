@@ -1,22 +1,24 @@
 import { format, getTime, formatDistanceToNow } from 'date-fns';
 
-export function fDate(date: Date | string | number | null, newFormat?: string): string {
+// ----------------------------------------------------------------------
+
+export function fDate(date: any, newFormat: string) {
   const fm = newFormat || 'dd MMM yyyy';
 
   return date ? format(new Date(date), fm) : '';
 }
 
-export function fDateTime(date: Date | string | number | null, newFormat?: string): string {
+export function fDateTime(date: any, newFormat: string) {
   const fm = newFormat || 'dd MMM yyyy p';
 
   return date ? format(new Date(date), fm) : '';
 }
 
-export function fTimestamp(date: Date | string | number | null): number | string {
+export function fTimestamp(date: any) {
   return date ? getTime(new Date(date)) : '';
 }
 
-export function fToNow(date: Date | string | number | null): string {
+export function fToNow(date: any) {
   return date
     ? formatDistanceToNow(new Date(date), {
         addSuffix: true,
