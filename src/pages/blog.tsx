@@ -8,7 +8,7 @@ export default function BlogPage() {
   return (
     <>
       <Helmet>
-        <title> Blog | NexGenLife </title>
+        <title> Blog | Minimal UI </title>
       </Helmet>
 
       <BlogView />

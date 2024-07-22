@@ -2,213 +2,215 @@ import merge from 'lodash/merge';
 import { alpha, useTheme } from '@mui/material/styles';
 import { useResponsive } from 'src/hooks/use-responsive';
 import { CustomTheme } from 'src/theme';
-import { ApexOptions } from 'apexcharts';
+import { ChartOptions } from './use-chart.d';
 
-export default function useChart(options: ApexOptions) {
-  const theme = useTheme() as CustomTheme;
+// ----------------------------------------------------------------------
 
-  const smUp = useResponsive('up', 'sm');
+export default function useChart(options: ChartOptions) {
+	const theme = useTheme() as CustomTheme;
 
-  const LABEL_TOTAL = {
-    show: true,
-    label: 'Total',
-    color: theme.palette.text.secondary,
-    fontSize: theme.typography.subtitle2.fontSize,
-    fontWeight: theme.typography.subtitle2.fontWeight,
-    lineHeight: theme.typography.subtitle2.lineHeight,
-  };
+	const smUp = useResponsive('up', 'sm');
 
-  const LABEL_VALUE = {
-    offsetY: 8,
-    color: theme.palette.text.primary,
-    fontSize: theme.typography.h3.fontSize,
-    fontWeight: theme.typography.h3.fontWeight,
-    lineHeight: theme.typography.h3.lineHeight,
-  };
+	const LABEL_TOTAL = {
+		show: true,
+		label: 'Total',
+		color: theme.palette.text.secondary,
+		fontSize: theme.typography.subtitle2.fontSize,
+		fontWeight: theme.typography.subtitle2.fontWeight,
+		lineHeight: theme.typography.subtitle2.lineHeight,
+	};
 
-  const baseOptions = {
-    // Colors
-    colors: [
-      theme.palette.primary.main,
-      theme.palette.warning.main,
-      theme.palette.info.main,
-      theme.palette.error.main,
-      theme.palette.success.main,
-      theme.palette.warning.dark,
-      theme.palette.success.darker,
-      theme.palette.info.dark,
-      theme.palette.info.darker,
-    ],
+	const LABEL_VALUE = {
+		offsetY: 8,
+		color: theme.palette.text.primary,
+		fontSize: theme.typography.h3.fontSize,
+		fontWeight: theme.typography.h3.fontWeight,
+		lineHeight: theme.typography.h3.lineHeight,
+	};
 
-    // Chart
-    chart: {
-      toolbar: { show: false },
-      zoom: { enabled: false },
-      // animations: { enabled: false },
-      foreColor: theme.palette.text.disabled,
-      fontFamily: theme.typography.fontFamily,
-    },
+	const baseOptions = {
+		// Colors
+		colors: [
+			theme.palette.primary.main,
+			theme.palette.warning.main,
+			theme.palette.info.main,
+			theme.palette.error.main,
+			theme.palette.success.main,
+			theme.palette.warning.dark,
+			theme.palette.success.darker,
+			theme.palette.info.dark,
+			theme.palette.info.darker,
+		],
 
-    // States
-    states: {
-      hover: {
-        filter: {
-          type: 'lighten',
-          value: 0.04,
-        },
-      },
-      active: {
-        filter: {
-          type: 'darken',
-          value: 0.88,
-        },
-      },
-    },
+		// Chart
+		chart: {
+			toolbar: { show: false },
+			zoom: { enabled: false },
+			// animations: { enabled: false },
+			foreColor: theme.palette.text.disabled,
+			fontFamily: theme.typography.fontFamily,
+		},
 
-    // Fill
-    fill: {
-      opacity: 1,
-      gradient: {
-        type: 'vertical',
-        shadeIntensity: 0,
-        opacityFrom: 0.4,
-        opacityTo: 0,
-        stops: [0, 100],
-      },
-    },
+		// States
+		states: {
+			hover: {
+				filter: {
+					type: 'lighten',
+					value: 0.04,
+				},
+			},
+			active: {
+				filter: {
+					type: 'darken',
+					value: 0.88,
+				},
+			},
+		},
 
-    // Datalabels
-    dataLabels: {
-      enabled: false,
-    },
+		// Fill
+		fill: {
+			opacity: 1,
+			gradient: {
+				type: 'vertical',
+				shadeIntensity: 0,
+				opacityFrom: 0.4,
+				opacityTo: 0,
+				stops: [0, 100],
+			},
+		},
 
-    // Stroke
-    stroke: {
-      width: 3,
-      curve: 'smooth',
-      lineCap: 'round',
-    },
+		// Datalabels
+		dataLabels: {
+			enabled: false,
+		},
 
-    // Grid
-    grid: {
-      strokeDashArray: 3,
-      borderColor: theme.palette.divider,
-      xaxis: {
-        lines: {
-          show: false,
-        },
-      },
-    },
+		// Stroke
+		stroke: {
+			width: 3,
+			curve: 'smooth',
+			lineCap: 'round',
+		},
 
-    // Xaxis
-    xaxis: {
-      axisBorder: { show: false },
-      axisTicks: { show: false },
-    },
+		// Grid
+		grid: {
+			strokeDashArray: 3,
+			borderColor: theme.palette.divider,
+			xaxis: {
+				lines: {
+					show: false,
+				},
+			},
+		},
 
-    // Markers
-    markers: {
-      size: 0,
-      strokeColors: theme.palette.background.paper,
-    },
+		// Xaxis
+		xaxis: {
+			axisBorder: { show: false },
+			axisTicks: { show: false },
+		},
 
-    // Tooltip
-    tooltip: {
-      theme: false,
-      x: {
-        show: true,
-      },
-    },
+		// Markers
+		markers: {
+			size: 0,
+			strokeColors: theme.palette.background.paper,
+		},
 
-    // Legend
-    legend: {
-      show: true,
-      fontSize: 13,
-      position: 'top',
-      horizontalAlign: 'right',
-      markers: {
-        radius: 12,
-      },
-      fontWeight: 500,
-      itemMargin: {
-        horizontal: 8,
-      },
-      labels: {
-        colors: theme.palette.text.primary,
-      },
-    },
+		// Tooltip
+		tooltip: {
+			theme: false,
+			x: {
+				show: true,
+			},
+		},
 
-    // plotOptions
-    plotOptions: {
-      // Bar
-      bar: {
-        borderRadius: smUp ? 3 : 1,
-        columnWidth: '28%',
-        borderRadiusApplication: 'end',
-        borderRadiusWhenStacked: 'last',
-      },
+		// Legend
+		legend: {
+			show: true,
+			fontSize: 13,
+			position: 'top',
+			horizontalAlign: 'right',
+			markers: {
+				radius: 12,
+			},
+			fontWeight: 500,
+			itemMargin: {
+				horizontal: 8,
+			},
+			labels: {
+				colors: theme.palette.text.primary,
+			},
+		},
 
-      // Pie + Donut
-      pie: {
-        donut: {
-          labels: {
-            show: true,
-            value: LABEL_VALUE,
-            total: LABEL_TOTAL,
-          },
-        },
-      },
+		// plotOptions
+		plotOptions: {
+			// Bar
+			bar: {
+				borderRadius: smUp ? 3 : 1,
+				columnWidth: '28%',
+				borderRadiusApplication: 'end',
+				borderRadiusWhenStacked: 'last',
+			},
 
-      // Radialbar
-      radialBar: {
-        track: {
-          strokeWidth: '100%',
-          background: alpha(theme.palette.grey[500], 0.16),
-        },
-        dataLabels: {
-          value: LABEL_VALUE,
-          total: LABEL_TOTAL,
-        },
-      },
+			// Pie + Donut
+			pie: {
+				donut: {
+					labels: {
+						show: true,
+						value: LABEL_VALUE,
+						total: LABEL_TOTAL,
+					},
+				},
+			},
 
-      // Radar
-      radar: {
-        polygons: {
-          fill: { colors: ['transparent'] },
-          strokeColors: theme.palette.divider,
-          connectorColors: theme.palette.divider,
-        },
-      },
+			// Radialbar
+			radialBar: {
+				track: {
+					strokeWidth: '100%',
+					background: alpha(theme.palette.grey[500], 0.16),
+				},
+				dataLabels: {
+					value: LABEL_VALUE,
+					total: LABEL_TOTAL,
+				},
+			},
 
-      // polarArea
-      polarArea: {
-        rings: {
-          strokeColor: theme.palette.divider,
-        },
-        spokes: {
-          connectorColors: theme.palette.divider,
-        },
-      },
-    },
+			// Radar
+			radar: {
+				polygons: {
+					fill: { colors: ['transparent'] },
+					strokeColors: theme.palette.divider,
+					connectorColors: theme.palette.divider,
+				},
+			},
 
-    // Responsive
-    responsive: [
-      {
-        // sm
-        breakpoint: theme.breakpoints.values.sm,
-        options: {
-          plotOptions: { bar: { columnWidth: '40%' } },
-        },
-      },
-      {
-        // md
-        breakpoint: theme.breakpoints.values.md,
-        options: {
-          plotOptions: { bar: { columnWidth: '32%' } },
-        },
-      },
-    ],
-  };
+			// polarArea
+			polarArea: {
+				rings: {
+					strokeColor: theme.palette.divider,
+				},
+				spokes: {
+					connectorColors: theme.palette.divider,
+				},
+			},
+		},
 
-  return merge(baseOptions, options);
+		// Responsive
+		responsive: [
+			{
+				// sm
+				breakpoint: theme.breakpoints.values.sm,
+				options: {
+					plotOptions: { bar: { columnWidth: '40%' } },
+				},
+			},
+			{
+				// md
+				breakpoint: theme.breakpoints.values.md,
+				options: {
+					plotOptions: { bar: { columnWidth: '32%' } },
+				},
+			},
+		],
+	};
+
+	return merge(baseOptions, options);
 }

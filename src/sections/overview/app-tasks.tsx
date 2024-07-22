@@ -14,10 +14,10 @@ import Iconify from 'src/components/iconify';
 
 // ----------------------------------------------------------------------
 
-export default function AnalyticsTasks({ title, subheader, list, ...other }: any) {
+export default function AnalyticsTasks({ title, subheader, list, ...other }) {
   const [selected, setSelected] = useState(['2']);
 
-  const handleClickComplete = (taskId: any) => {
+  const handleClickComplete = (taskId) => {
     const tasksCompleted = selected.includes(taskId)
       ? selected.filter((value) => value !== taskId)
       : [...selected, taskId];
@@ -29,7 +29,7 @@ export default function AnalyticsTasks({ title, subheader, list, ...other }: any
     <Card {...other}>
       <CardHeader title={title} subheader={subheader} />
 
-      {list.map((task: any) => (
+      {list.map((task) => (
         <TaskItem
           key={task.id}
           task={task}
@@ -49,10 +49,10 @@ AnalyticsTasks.propTypes = {
 
 // ----------------------------------------------------------------------
 
-function TaskItem({ task, checked, onChange }: any) {
+function TaskItem({ task, checked, onChange }) {
   const [open, setOpen] = useState(null);
 
-  const handleOpenMenu = (event: any) => {
+  const handleOpenMenu = (event) => {
     setOpen(event.currentTarget);
   };
 

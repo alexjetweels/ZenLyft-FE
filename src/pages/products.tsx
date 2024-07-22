@@ -8,7 +8,7 @@ export default function ProductsPage() {
   return (
     <>
       <Helmet>
-        <title> Products | NexGenLife </title>
+        <title> Products | Minimal UI </title>
       </Helmet>
 
       <ProductsView />

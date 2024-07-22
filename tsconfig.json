@@ -14,8 +14,7 @@
     "resolveJsonModule": true, // Allow importing JSON modules
     "isolatedModules": true, // Ensure each file can be transpiled independently
     "noEmit": true, // Do not emit outputs (useful when using Babel or another bundler)
-    "jsx": "react-jsx", // Support JSX in .tsx files
-    "noImplicitAny": true // Disallow implicit any types
+    "jsx": "react-jsx" // Support JSX in .tsx files
   },
   "include": [
     "src/**/*" // Include all files in the src folder

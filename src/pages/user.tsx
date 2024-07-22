@@ -8,7 +8,7 @@ export default function UserPage() {
   return (
     <>
       <Helmet>
-        <title> User | NexGenLife </title>
+        <title> User | Minimal UI </title>
       </Helmet>
 
       <UserView />

@@ -8,7 +8,7 @@ export default function AppPage() {
   return (
     <>
       <Helmet>
-        <title> Dashboard | NexGenLife </title>
+        <title> Dashboard | Minimal UI </title>
       </Helmet>
 
       <AppView />
