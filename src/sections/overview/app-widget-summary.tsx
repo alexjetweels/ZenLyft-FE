@@ -1,5 +1,3 @@
-import PropTypes from 'prop-types';
-
 import Box from '@mui/material/Box';
 import Card from '@mui/material/Card';
 import Stack from '@mui/material/Stack';
@@ -7,9 +5,21 @@ import Typography from '@mui/material/Typography';
 
 import { fShortenNumber } from 'src/utils/format-number';
 
-// ----------------------------------------------------------------------
-// eslint-disable-next-line @typescript-eslint/no-unused-vars
-export default function AppWidgetSummary({ title, total, icon, color = 'primary', sx, ...other }) {
+interface AppWidgetSummaryProps {
+  title: string;
+  total: number;
+  icon: React.ReactNode;
+  color?: 'primary' | 'success' | 'info' | 'warning' | 'error';
+  sx?: object;
+}
+
+export default function AppWidgetSummary({
+  title,
+  total,
+  icon,
+  sx,
+  ...other
+}: AppWidgetSummaryProps) {
   return (
     <Card
       component={Stack}
@@ -35,11 +45,3 @@ export default function AppWidgetSummary({ title, total, icon, color = 'primary'
     </Card>
   );
 }
-
-AppWidgetSummary.propTypes = {
-  color: PropTypes.string,
-  icon: PropTypes.oneOfType([PropTypes.element, PropTypes.string]),
-  sx: PropTypes.object,
-  title: PropTypes.string,
-  total: PropTypes.number,
-};

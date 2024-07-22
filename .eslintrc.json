@@ -38,6 +38,7 @@
         "tsx": "never"
       }
     ],
+    "@typescript-eslint/no-explicit-any": "off", //TODO: remove this one in the future
     "no-alert": 0,
     "camelcase": 0,
     "no-console": 0,

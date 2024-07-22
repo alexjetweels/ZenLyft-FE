@@ -1,5 +1,3 @@
-import PropTypes from 'prop-types';
-
 import Card from '@mui/material/Card';
 import CardHeader from '@mui/material/CardHeader';
 import { styled, useTheme } from '@mui/material/styles';
@@ -7,6 +5,8 @@ import { styled, useTheme } from '@mui/material/styles';
 import { fNumber } from 'src/utils/format-number';
 
 import Chart, { useChart } from 'src/components/chart';
+import { ApexOptions } from 'apexcharts';
+import { CustomTheme } from 'src/theme';
 
 // ----------------------------------------------------------------------
 
@@ -26,19 +26,31 @@ const StyledChart = styled(Chart)(({ theme }) => ({
   },
 }));
 
-// ----------------------------------------------------------------------
-
-export default function AppCurrentVisits({ title, subheader, chart, ...other }) {
-  const theme = useTheme();
+interface AppCurrentVisitsProps {
+  chart: {
+    colors?: string[];
+    series: { label: string; value: number }[];
+    options?: object;
+  };
+  subheader?: string;
+  title?: string;
+}
+export default function AppCurrentVisits({
+  title,
+  subheader,
+  chart,
+  ...other
+}: AppCurrentVisitsProps) {
+  const theme: CustomTheme = useTheme();
 
   const { colors, series, options } = chart;
 
   const chartSeries = series.map((i) => i.value);
 
-  const chartOptions = useChart({
+  const chartOptions: ApexOptions = useChart({
     chart: {
       sparkline: {
-        enabled: true,
+        enabled: false,
       },
     },
     colors,
@@ -89,13 +101,8 @@ export default function AppCurrentVisits({ title, subheader, chart, ...other }) 
         options={chartOptions}
         width="100%"
         height={280}
+        theme={theme}
       />
     </Card>
   );
 }
-
-AppCurrentVisits.propTypes = {
-  chart: PropTypes.object,
-  subheader: PropTypes.string,
-  title: PropTypes.string,
-};
