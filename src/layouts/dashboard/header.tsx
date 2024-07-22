@@ -55,7 +55,7 @@ const Header: FC<HeaderProps> = ({ onOpenNav }) => {
         zIndex: theme.zIndex.appBar + 1,
         ...bgBlur({
           color: theme.palette.background.default,
-        }),
+        }).root,
         transition: theme.transitions.create(['height'], {
           duration: theme.transitions.duration.shorter,
         }),
@@ -75,6 +75,6 @@ const Header: FC<HeaderProps> = ({ onOpenNav }) => {
       </Toolbar>
     </AppBar>
   );
-}
+};
 
 export default Header;
