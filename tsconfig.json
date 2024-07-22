@@ -21,7 +21,6 @@
   ],
   "exclude": [
     "node_modules", // Exclude node_modules directory from compilation
-    "**/*.spec.ts", // Optionally exclude test files
-    "vite.config.mts" // Optionally exclude Vite configuration file
+    "**/*.spec.ts" // Optionally exclude test files
   ]
 }

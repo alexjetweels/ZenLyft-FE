@@ -4,7 +4,6 @@
   "licence": "MIT",
   "version": "1.8.0",
   "private": false,
-  "type": "module",
   "scripts": {
     "dev": "vite",
     "start": "vite preview",
@@ -31,7 +30,6 @@
     "@mui/styles": "^5.15.9",
     "@mui/system": "^5.15.9",
     "@types/numeral": "^2.0.5",
-    "@vitejs/plugin-react-swc": "^3.6.0",
     "apexcharts": "^3.45.2",
     "date-fns": "^3.3.1",
     "history": "^5.3.0",
@@ -44,9 +42,7 @@
     "react-helmet-async": "^2.0.4",
     "react-hook-form": "^7.50.0",
     "react-router-dom": "^6.22.0",
-    "simplebar-react": "^3.2.4",
-    "vite": "^5.0.12",
-    "vite-plugin-checker": "^0.6.4"
+    "simplebar-react": "^3.2.4"
   },
   "devDependencies": {
     "@types/jest": "^29.5.12",
@@ -55,6 +51,7 @@
     "@types/react-dom": "^18.2.18",
     "@typescript-eslint/eslint-plugin": "^6.20.0",
     "@typescript-eslint/parser": "^6.20.0",
+    "@vitejs/plugin-react-swc": "^3.6.0",
     "eslint": "^8.56.0",
     "eslint-config-airbnb": "^19.0.4",
     "eslint-config-prettier": "^9.1.0",
@@ -67,6 +64,8 @@
     "eslint-plugin-react-hooks": "^4.6.0",
     "eslint-plugin-unused-imports": "^3.0.0",
     "prettier": "^3.2.4",
-    "typescript": "5.3.2"
+    "typescript": "^5.3.3",
+    "vite": "^5.0.12",
+    "vite-plugin-checker": "^0.6.4"
   }
 }
