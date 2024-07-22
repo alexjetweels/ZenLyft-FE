@@ -13,7 +13,7 @@
     "ecmaFeatures": {
       "jsx": true
     },
-    "project": "./tsconfig.json"
+    "project": "./tsconfig.eslint.json"
   },
   "settings": {
     "react": {
@@ -22,7 +22,7 @@
     "import/resolver": {
       "alias": {
         "map": [["src", "./src"]],
-        "extensions": [".js", ".jsx", ".ts", ".tsx", ".json"]
+        "extensions": [".js", ".jsx", ".ts", ".tsx", ".json", ".mts"]
       }
     }
   },
