@@ -8,181 +8,182 @@ import { CSSProperties } from 'react';
 import { CustomTheme } from '.';
 
 export interface BgBlurProps {
-	color?: string;
-	blur?: number;
-	opacity?: number;
-	imgUrl?: string;
+  color?: string;
+  blur?: number;
+  opacity?: number;
+  imgUrl?: string;
 }
 
 export interface BgGradientProps {
-	direction?: string;
-	startColor?: string;
-	endColor?: string;
-	imgUrl?: string;
-	color?: string;
+  direction?: string;
+  startColor?: string;
+  endColor?: string;
+  imgUrl?: string;
+  color?: string;
 }
 
 export interface PaperProps {
-	theme: CustomTheme;
-	bgcolor?: string;
-	dropdown?: boolean;
+  theme: CustomTheme;
+  bgcolor?: string;
+  dropdown?: boolean;
 }
 
 export interface MenuItemProps {
-	theme: CustomTheme;
+  theme: CustomTheme;
 }
 
 export const paper = ({ theme, bgcolor, dropdown }: PaperProps): CSSProperties => {
-	const bgBlurResult = bgBlur({
-		blur: 20,
-		opacity: 0.9,
-		color: theme.palette.background.paper,
-		...(!!bgcolor && {
-			color: bgcolor,
-		}),
-	});
+  const bgBlurResult = bgBlur({
+    blur: 20,
+    opacity: 0.9,
+    color: theme.palette.background.paper,
+    ...(!!bgcolor && {
+      color: bgcolor,
+    }),
+  });
 
-	return {
-		...(typeof bgcolor === 'object' ? bgBlurResult : {}),
-		backgroundImage: 'url(/assets/cyan-blur.png), url(/assets/red-blur.png)',
-		backgroundRepeat: 'no-repeat, no-repeat',
-		backgroundPosition: 'top right, left bottom',
-		backgroundSize: '50%, 50%',
-		...(theme.direction === 'rtl' && {
-			backgroundPosition: 'top left, right bottom',
-		}),
-		...(dropdown && {
-			padding: theme.spacing(0.5),
-			boxShadow: theme.customShadows.dropdown,
-			borderRadius: theme.shape.borderRadius * 1.25,
-		}),
-	}
+  return {
+    ...(typeof bgcolor === 'object' ? bgBlurResult : {}),
+    backgroundImage: 'url(/assets/cyan-blur.png), url(/assets/red-blur.png)',
+    backgroundRepeat: 'no-repeat, no-repeat',
+    backgroundPosition: 'top right, left bottom',
+    backgroundSize: '50%, 50%',
+    ...(theme.direction === 'rtl' && {
+      backgroundPosition: 'top left, right bottom',
+    }),
+    ...(dropdown && {
+      padding: theme.spacing(0.5),
+      boxShadow: theme.customShadows.dropdown,
+      borderRadius: theme.shape.borderRadius * 1.25,
+    }),
+  };
 };
 
 // ----------------------------------------------------------------------
 
-export const menuItem = (theme: CustomTheme) => createStyles({
-	root: {
-		...theme.typography.body2,
-		padding: theme.spacing(0.75, 1),
-		borderRadius: theme.shape.borderRadius * 0.75,
-		'&:not(:last-of-type)': {
-			marginBottom: 4,
-		},
-		[`&.${menuItemClasses.selected}`]: {
-			fontWeight: theme.typography.fontWeightSemiBold,
-			backgroundColor: theme.palette.action.selected,
-			'&:hover': {
-				backgroundColor: theme.palette.action.hover,
-			},
-		},
-		[`& .${checkboxClasses.root}`]: {
-			padding: theme.spacing(0.5),
-			marginLeft: theme.spacing(-0.5),
-			marginRight: theme.spacing(0.5),
-		},
-		[`&.${autocompleteClasses.option}[aria-selected="true"]`]: {
-			backgroundColor: theme.palette.action.selected,
-			'&:hover': {
-				backgroundColor: theme.palette.action.hover,
-			},
-		},
-		[`&+.${dividerClasses.root}`]: {
-			margin: theme.spacing(0.5, 0),
-		},
-	}
-});
+export const menuItem = (theme: CustomTheme) =>
+  createStyles({
+    root: {
+      ...theme.typography.body2,
+      padding: theme.spacing(0.75, 1),
+      borderRadius: theme.shape.borderRadius * 0.75,
+      '&:not(:last-of-type)': {
+        marginBottom: 4,
+      },
+      [`&.${menuItemClasses.selected}`]: {
+        fontWeight: theme.typography.fontWeightSemiBold,
+        backgroundColor: theme.palette.action.selected,
+        '&:hover': {
+          backgroundColor: theme.palette.action.hover,
+        },
+      },
+      [`& .${checkboxClasses.root}`]: {
+        padding: theme.spacing(0.5),
+        marginLeft: theme.spacing(-0.5),
+        marginRight: theme.spacing(0.5),
+      },
+      [`&.${autocompleteClasses.option}[aria-selected="true"]`]: {
+        backgroundColor: theme.palette.action.selected,
+        '&:hover': {
+          backgroundColor: theme.palette.action.hover,
+        },
+      },
+      [`&+.${dividerClasses.root}`]: {
+        margin: theme.spacing(0.5, 0),
+      },
+    },
+  });
 
 // ----------------------------------------------------------------------
 
 export function bgBlur(props: BgBlurProps) {
-	const color = props?.color || '#000000';
-	const blur = props?.blur || 6;
-	const opacity = props?.opacity || 0.8;
-	const imgUrl = props?.imgUrl;
+  const color = props?.color || '#000000';
+  const blur = props?.blur || 6;
+  const opacity = props?.opacity || 0.8;
+  const imgUrl = props?.imgUrl;
 
-	if (imgUrl) {
-		return createStyles({
-			root: {
-				position: 'relative',
-				backgroundImage: `url(${imgUrl})`,
-				'&:before': {
-					position: 'absolute',
-					top: 0,
-					left: 0,
-					zIndex: 9,
-					content: '""',
-					width: '100%',
-					height: '100%',
-					backdropFilter: `blur(${blur}px)`,
-					WebkitBackdropFilter: `blur(${blur}px)`,
-					backgroundColor: alpha(color, opacity),
-				},
-			}
-		});
-	}
+  if (imgUrl) {
+    return createStyles({
+      root: {
+        position: 'relative',
+        backgroundImage: `url(${imgUrl})`,
+        '&:before': {
+          position: 'absolute',
+          top: 0,
+          left: 0,
+          zIndex: 9,
+          content: '""',
+          width: '100%',
+          height: '100%',
+          backdropFilter: `blur(${blur}px)`,
+          WebkitBackdropFilter: `blur(${blur}px)`,
+          backgroundColor: alpha(color, opacity),
+        },
+      },
+    });
+  }
 
-	return createStyles({
-		root: {
-			backdropFilter: `blur(${blur}px)`,
-			WebkitBackdropFilter: `blur(${blur}px)`,
-			backgroundColor: alpha(color, opacity),
-		}
-	});
+  return createStyles({
+    root: {
+      backdropFilter: `blur(${blur}px)`,
+      WebkitBackdropFilter: `blur(${blur}px)`,
+      backgroundColor: alpha(color, opacity),
+    },
+  });
 }
 
 // ----------------------------------------------------------------------
 
 export function bgGradient(props: BgGradientProps): CSSProperties {
-	const direction = props?.direction || 'to bottom';
-	const startColor = props?.startColor;
-	const endColor = props?.endColor;
-	const imgUrl = props?.imgUrl;
-	const color = props?.color;
+  const direction = props?.direction || 'to bottom';
+  const startColor = props?.startColor;
+  const endColor = props?.endColor;
+  const imgUrl = props?.imgUrl;
+  const color = props?.color;
 
-	if (imgUrl) {
-		return {
-			background: `linear-gradient(${direction}, ${startColor || color}, ${
-				endColor || color
-			}), url(${imgUrl})`,
-			backgroundSize: 'cover',
-			backgroundRepeat: 'no-repeat',
-			backgroundPosition: 'center center',
-		};
-	}
+  if (imgUrl) {
+    return {
+      background: `linear-gradient(${direction}, ${startColor || color}, ${
+        endColor || color
+      }), url(${imgUrl})`,
+      backgroundSize: 'cover',
+      backgroundRepeat: 'no-repeat',
+      backgroundPosition: 'center center',
+    };
+  }
 
-	return {
-		background: `linear-gradient(${direction}, ${startColor}, ${endColor})`,
-	};
+  return {
+    background: `linear-gradient(${direction}, ${startColor}, ${endColor})`,
+  };
 }
 
 // ----------------------------------------------------------------------
 
 export function textGradient(value: string): CSSProperties {
-	return {
-		background: `-webkit-linear-gradient(${value})`,
-		WebkitBackgroundClip: 'text',
-		WebkitTextFillColor: 'transparent',
-	};
+  return {
+    background: `-webkit-linear-gradient(${value})`,
+    WebkitBackgroundClip: 'text',
+    WebkitTextFillColor: 'transparent',
+  };
 }
 
 // ----------------------------------------------------------------------
 
 export const hideScroll = {
-	x: {
-		msOverflowStyle: 'none',
-		scrollbarWidth: 'none',
-		overflowX: 'scroll',
-		'&::-webkit-scrollbar': {
-			display: 'none',
-		},
-	},
-	y: {
-		msOverflowStyle: 'none',
-		scrollbarWidth: 'none',
-		overflowY: 'scroll',
-		'&::-webkit-scrollbar': {
-			display: 'none',
-		},
-	},
+  x: {
+    msOverflowStyle: 'none',
+    scrollbarWidth: 'none',
+    overflowX: 'scroll',
+    '&::-webkit-scrollbar': {
+      display: 'none',
+    },
+  },
+  y: {
+    msOverflowStyle: 'none',
+    scrollbarWidth: 'none',
+    overflowY: 'scroll',
+    '&::-webkit-scrollbar': {
+      display: 'none',
+    },
+  },
 };
