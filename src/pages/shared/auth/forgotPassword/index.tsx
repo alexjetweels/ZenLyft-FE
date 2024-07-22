@@ -4,11 +4,11 @@ import { LoginView } from 'src/sections/login';
 
 // ----------------------------------------------------------------------
 
-export default function LoginPage() {
+export default function ForgotPasswordPage() {
   return (
     <>
       <Helmet>
-        <title> Login | Minimal UI </title>
+        <title>Forgot Password</title>
       </Helmet>
 
       <LoginView />

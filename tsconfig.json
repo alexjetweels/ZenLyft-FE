@@ -14,13 +14,15 @@
     "resolveJsonModule": true, // Allow importing JSON modules
     "isolatedModules": true, // Ensure each file can be transpiled independently
     "noEmit": true, // Do not emit outputs (useful when using Babel or another bundler)
-    "jsx": "react-jsx" // Support JSX in .tsx files
+    "jsx": "react-jsx", // Support JSX in .tsx files
+    "noImplicitAny": true // Disallow implicit any types
   },
   "include": [
     "src/**/*" // Include all files in the src folder
   ],
   "exclude": [
     "node_modules", // Exclude node_modules directory from compilation
-    "**/*.spec.ts" // Optionally exclude test files
+    "**/*.spec.ts", // Optionally exclude test files
+    "vite.config.mts" // Optionally exclude Vite configuration file
   ]
 }
