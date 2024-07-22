@@ -1,6 +1,6 @@
 {
-  "name": "@NexGenLife",
-  "author": "Alex Dinh",
+  "name": "@nexgenlife/frontend",
+  "author": "alex dinh",
   "licence": "MIT",
   "version": "1.8.0",
   "private": false,
