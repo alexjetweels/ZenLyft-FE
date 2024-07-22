@@ -1,11 +1,15 @@
 import { resolve } from 'path';
-import { defineConfig } from 'vite';
-import checker from 'vite-plugin-checker';
 import react from '@vitejs/plugin-react';
+
+// eslint-disable-next-line import/no-extraneous-dependencies
+import checker from 'vite-plugin-checker';
+// eslint-disable-next-line import/no-extraneous-dependencies
+import { defineConfig } from 'vite';
+
 
 export default defineConfig({
   build: {
-    outDir: 'build',
+    outDir: 'dist',
     sourcemap: false,
   },
   server: {
