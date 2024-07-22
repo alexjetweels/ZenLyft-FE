@@ -1,10 +1,7 @@
 import { resolve } from 'path';
-import react from '@vitejs/plugin-react';
-
-// eslint-disable-next-line import/no-extraneous-dependencies
-import checker from 'vite-plugin-checker';
-// eslint-disable-next-line import/no-extraneous-dependencies
 import { defineConfig } from 'vite';
+import react from '@vitejs/plugin-react';
+import checker from 'vite-plugin-checker';
 
 
 export default defineConfig({
@@ -13,7 +10,7 @@ export default defineConfig({
     sourcemap: false,
   },
   server: {
-    port: 5174,
+    port: 3030,
   },
   resolve: {
     alias: {
