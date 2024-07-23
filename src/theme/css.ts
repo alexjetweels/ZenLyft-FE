@@ -32,7 +32,7 @@ export const paper = ({
   }),
   ...(dropdown && {
     padding: theme.spacing(0.5),
-    boxShadow: theme.customShadows.dropdown,
+    boxShadow: theme.shadows[3],
     borderRadius: theme.shape.borderRadius * 1.25,
   }),
 });
@@ -47,7 +47,7 @@ export const menuItem = (theme: Theme) => ({
     marginBottom: 4,
   },
   [`&.${menuItemClasses.selected}`]: {
-    fontWeight: theme.typography.fontWeightSemiBold,
+    fontWeight: theme.typography.fontWeightMedium,
     backgroundColor: theme.palette.action.selected,
     '&:hover': {
       backgroundColor: theme.palette.action.hover,

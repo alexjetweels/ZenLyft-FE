@@ -1,6 +1,4 @@
-import { alpha, PaletteOptions } from '@mui/material/styles';
-
-// ----------------------------------------------------------------------
+import { alpha } from '@mui/material/styles';
 
 // SETUP COLORS
 
@@ -101,7 +99,7 @@ const base = {
 
 // ----------------------------------------------------------------------
 
-export function palette(): PaletteOptions {
+export function palette() {
   return {
     ...base,
     mode: 'light',
@@ -113,7 +111,6 @@ export function palette(): PaletteOptions {
     background: {
       paper: '#FFFFFF',
       default: grey[100],
-      neutral: grey[200],
     },
     action: {
       ...base.action,

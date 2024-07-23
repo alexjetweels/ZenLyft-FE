@@ -1,5 +1,6 @@
-import { TypographyOptions } from '@mui/material/styles/createTypography';
 import React from 'react';
+
+import { TypographyOptions } from '@mui/material/styles/createTypography';
 
 declare module '@mui/material/styles' {
   interface CustomTypography extends Typography {

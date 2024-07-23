@@ -13,7 +13,7 @@ export default function DashboardLayout({ children }: { children: React.ReactNod
 
   return (
     <>
-      <Header onOpenNav={() => setOpenNav(true)} />
+      <Header />
 
       <Box
         sx={{

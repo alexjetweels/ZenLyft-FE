@@ -1,6 +1,6 @@
 import { alpha, Shadows } from '@mui/material/styles';
 
-import { grey } from './palette.ts';
+import { grey } from './palette';
 
 // ----------------------------------------------------------------------
 

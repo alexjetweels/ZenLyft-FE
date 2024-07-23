@@ -7,21 +7,22 @@ import Toolbar from '@mui/material/Toolbar';
 import { useTheme } from '@mui/material/styles';
 import IconButton from '@mui/material/IconButton';
 
-import { useResponsive } from 'src/hooks/use-responsive.ts';
+import { useResponsive } from 'src/hooks/use-responsive';
 
-import { bgBlur } from 'src/theme/css.ts';
+import { bgBlur } from 'src/theme/css';
 
-import Iconify from 'src/components/iconify/index.tsx';
+import Iconify from 'src/components/iconify/index';
 
 import { NAV, HEADER } from './config-layout';
-import Searchbar from './common/searchbar.tsx';
 import AccountPopover from './common/account-popover';
 import LanguagePopover from './common/language-popover';
 import NotificationsPopover from './common/notifications-popover';
+import SearchModal from './common/SearchModal';
 
 // ----------------------------------------------------------------------
 
-export default function Header({ onOpenNav }) {
+interface HeaderProps {}
+export default function Header({}: HeaderProps) {
   const theme = useTheme();
 
   const lgUp = useResponsive('up', 'lg');
@@ -29,7 +30,7 @@ export default function Header({ onOpenNav }) {
   const renderContent = (
     <>
       {!lgUp && (
-        <IconButton onClick={onOpenNav} sx={{ mr: 1 }}>
+        <IconButton sx={{ mr: 1 }}>
           <Iconify icon="eva:menu-2-fill" />
         </IconButton>
       )}
@@ -37,7 +38,7 @@ export default function Header({ onOpenNav }) {
       <Box sx={{ flexGrow: 1 }} />
 
       <Stack direction="row" alignItems="center" spacing={1}>
-        <Searchbar />
+        <SearchModal />
         <LanguagePopover />
         <NotificationsPopover />
         <AccountPopover />
@@ -50,10 +51,9 @@ export default function Header({ onOpenNav }) {
       sx={{
         boxShadow: 'none',
         height: HEADER.H_MOBILE,
-        zIndex: theme.zIndex.appBar + 1,
-        ...bgBlur({
+        ...(bgBlur({
           color: theme.palette.background.default,
-        }),
+        }) as any),
         transition: theme.transitions.create(['height'], {
           duration: theme.transitions.duration.shorter,
         }),
@@ -74,7 +74,3 @@ export default function Header({ onOpenNav }) {
     </AppBar>
   );
 }
-
-Header.propTypes = {
-  onOpenNav: PropTypes.func,
-};
