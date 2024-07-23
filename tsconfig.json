@@ -15,7 +15,8 @@
       "src/*": ["./src/*"]
     },
     "noEmit": true,
-    "allowImportingTsExtensions": true
+    "allowImportingTsExtensions": true,
+    "types": ["./node_modules/user-agent-data-types"]
   },
   "include": ["src/**/*"],
   "exclude": ["node_modules", "build"]

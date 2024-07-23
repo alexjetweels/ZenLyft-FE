@@ -1,8 +1,8 @@
-import { Theme as MuiTheme, ThemeOptions } from '@mui/material/styles';
+import { Theme } from '@mui/material/styles';
 
 declare module '@mui/material/styles' {
-  interface Theme extends MuiTheme {
-    customShadows: {
+  interface CustomTheme extends Theme {
+    customShadows?: {
       z1: string;
       z4: string;
       z8: string;
@@ -23,5 +23,6 @@ declare module '@mui/material/styles' {
       error: string;
     };
     typography: CustomTypographyOptions;
+    palette: CustomPaletteOptions;
   }
 }

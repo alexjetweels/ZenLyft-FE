@@ -5,8 +5,8 @@ import CssBaseline from '@mui/material/CssBaseline';
 import {
   Components,
   createTheme,
-  ThemeProvider as MUIThemeProvider,
   ThemeOptions,
+  ThemeProvider as MUIThemeProvider,
 } from '@mui/material/styles';
 
 import { palette } from './palette';
@@ -18,7 +18,7 @@ import { customShadows } from './custom-shadows';
 // ----------------------------------------------------------------------
 
 export default function ThemeProvider({ children }: { children: React.ReactNode }) {
-  const memoizedValue: ThemeOptions = useMemo(
+  const memoizedValue = useMemo(
     () => ({
       palette: palette(),
       typography,
@@ -29,9 +29,9 @@ export default function ThemeProvider({ children }: { children: React.ReactNode 
     []
   );
 
-  const theme = createTheme(memoizedValue);
+  const theme = createTheme(memoizedValue as ThemeOptions);
 
-  theme.components = overrides(theme) as Components<ThemeOptions>;
+  theme.components = overrides(theme) as Components;
 
   return (
     <MUIThemeProvider theme={theme}>

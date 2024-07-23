@@ -1,10 +1,10 @@
 import { memo } from 'react';
 import ApexChart from 'react-apexcharts';
 
+import { Theme } from '@mui/material';
 import { alpha, styled } from '@mui/material/styles';
 
-import { bgBlur } from 'src/theme/css.ts';
-import { Theme } from '@mui/material';
+import { bgBlur } from 'src/theme/css';
 
 // ----------------------------------------------------------------------
 
@@ -16,7 +16,7 @@ const Chart = styled(ApexChart)(({ theme }: { theme: Theme }) => ({
         color: theme.palette.background.default,
       }),
       color: theme.palette.text.primary,
-      boxShadow: theme.customShadows.dropdown,
+      boxShadow: theme.shadows[3],
       borderRadius: theme.shape.borderRadius * 1.25,
       '&.apexcharts-theme-light': {
         borderColor: 'transparent',
@@ -31,7 +31,7 @@ const Chart = styled(ApexChart)(({ theme }: { theme: Theme }) => ({
       }),
       borderColor: 'transparent',
       color: theme.palette.text.primary,
-      boxShadow: theme.customShadows.dropdown,
+      boxShadow: theme.shadows[3],
       borderRadius: theme.shape.borderRadius * 1.25,
       '&:before': {
         borderBottomColor: alpha(theme.palette.grey[500], 0.24),

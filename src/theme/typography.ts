@@ -1,7 +1,4 @@
-// ----------------------------------------------------------------------
-
 import { CustomTypographyOptions } from '@mui/material';
-import { TypographyOptions } from '@mui/material/styles/createTypography';
 
 export function remToPx(value: string) {
   return Math.round(parseFloat(value) * 16);
@@ -11,7 +8,7 @@ export function pxToRem(value: number) {
   return `${value / 16}rem`;
 }
 
-export function responsiveFontSizes({ sm, md, lg }: any) {
+export function responsiveFontSizes({ sm, md, lg }: { sm: number; md: number; lg: number }) {
   return {
     '@media (min-width:600px)': {
       fontSize: pxToRem(sm),

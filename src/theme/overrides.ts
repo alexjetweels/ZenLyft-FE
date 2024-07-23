@@ -75,7 +75,7 @@ export function overrides(theme: Theme) {
     MuiCard: {
       styleOverrides: {
         root: {
-          boxShadow: theme.customShadows.card,
+          boxShadow: theme.shadows[3],
           borderRadius: Number(theme.shape.borderRadius) * 2,
           position: 'relative',
           zIndex: 0, // Fix Safari overflow: hidden with border radius
@@ -111,7 +111,7 @@ export function overrides(theme: Theme) {
       styleOverrides: {
         head: {
           color: theme.palette.text.secondary,
-          backgroundColor: theme.palette.background.neutral,
+          backgroundColor: theme.palette.background.default,
         },
       },
     },
