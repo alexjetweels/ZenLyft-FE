@@ -3,7 +3,6 @@ import { defineConfig } from 'vite';
 import react from '@vitejs/plugin-react';
 import checker from 'vite-plugin-checker';
 
-
 export default defineConfig({
   build: {
     outDir: 'dist',
@@ -24,4 +23,7 @@ export default defineConfig({
     }),
     react(),
   ],
+  define: {
+    'process.env': process.env,
+  },
 });
