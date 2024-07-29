@@ -101,9 +101,9 @@ export default function SearchModal() {
 
   return (
     <>
-      <IconButton onClick={() => setOpen(true)}>
-        <Iconify icon="eva:search-fill" />
-      </IconButton>
+      <Button onClick={() => setOpen(true)}>
+        <Iconify icon="eva:search-fill" /> alex
+      </Button>
 
       <Dialog
         open={open}
