@@ -1,7 +1,10 @@
 import { lazy, Suspense } from 'react';
 import { Outlet, Navigate, useRoutes } from 'react-router-dom';
 
+import routePath from 'src/configs/routePath';
 import DashboardLayout from 'src/layouts/dashboard';
+
+import RequireAuth from 'src/components/requireAuth';
 
 export const IndexPage = lazy(() => import('src/pages/app'));
 export const BlogPage = lazy(() => import('src/pages/blog'));
@@ -23,23 +26,37 @@ export default function Router() {
         </DashboardLayout>
       ),
       children: [
-        { element: <IndexPage />, index: true },
-        { path: 'user', element: <UserPage /> },
+        {
+          element: (
+            <RequireAuth>
+              <IndexPage />
+            </RequireAuth>
+          ),
+          index: true,
+        },
+        {
+          path: 'user',
+          element: (
+            <RequireAuth>
+              <UserPage />
+            </RequireAuth>
+          ),
+        },
         { path: 'products', element: <ProductsPage /> },
         { path: 'blog', element: <BlogPage /> },
       ],
     },
     {
-      path: 'login',
+      path: routePath.LOGIN,
       element: <LoginPage />,
     },
     {
-      path: '404',
+      path: routePath.NOT_FOUND,
       element: <Page404 />,
     },
     {
       path: '*',
-      element: <Navigate to="/404" replace />,
+      element: <Navigate to={routePath.NOT_FOUND} replace />,
     },
   ]);
 
