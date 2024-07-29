@@ -8,7 +8,7 @@ export default function AppPage() {
   return (
     <>
       <Helmet>
-        <title> Dashboard | NextGenLife </title>
+        <title> Dashboard | Zenlyft </title>
       </Helmet>
 
       <AppView />

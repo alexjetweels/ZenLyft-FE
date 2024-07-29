@@ -8,7 +8,7 @@ export default function UserPage() {
   return (
     <>
       <Helmet>
-        <title> User | NextGenLife </title>
+        <title> User | Zenlyft </title>
       </Helmet>
 
       <UserView />

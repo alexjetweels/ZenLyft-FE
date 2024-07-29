@@ -74,7 +74,7 @@ export default function LoginPage() {
   return (
     <>
       <Helmet>
-        <title> Login | NextGenLife </title>
+        <title> Login | Zenlyft </title>
       </Helmet>
 
       <Box
@@ -102,7 +102,7 @@ export default function LoginPage() {
               maxWidth: 420,
             }}
           >
-            <Typography variant="h4">Sign in to NexGenLife</Typography>
+            <Typography variant="h4">Sign in to Zenlyft</Typography>
 
             <Typography variant="body2" sx={{ mt: 2, mb: 5 }}>
               Don’t have an account?
