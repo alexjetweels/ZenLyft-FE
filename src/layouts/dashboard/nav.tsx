@@ -1,5 +1,4 @@
 import { useEffect } from 'react';
-import PropTypes from 'prop-types';
 
 import Box from '@mui/material/Box';
 import Stack from '@mui/material/Stack';
@@ -16,7 +15,6 @@ import { useResponsive } from 'src/hooks/use-responsive';
 
 import { account } from 'src/_mock/account';
 
-import Logo from 'src/components/logo';
 import Scrollbar from 'src/components/scrollbar';
 
 import { NAV } from './config-layout';
@@ -24,7 +22,11 @@ import navConfig from './config-navigation';
 
 // ----------------------------------------------------------------------
 
-export default function Nav({ openNav, onCloseNav }) {
+interface NavProps {
+  openNav: boolean;
+  onCloseNav: VoidFunction;
+}
+export default function Nav({ openNav, onCloseNav }: NavProps) {
   const pathname = usePathname();
 
   const upLg = useResponsive('up', 'lg');
@@ -80,7 +82,9 @@ export default function Nav({ openNav, onCloseNav }) {
         },
       }}
     >
-      <Logo sx={{ mt: 3, ml: 4 }} />
+      <Box sx={{ display: 'flex', justifyContent: 'center' }}>
+        <img width={80} height={80} alt="Zenlyft" src="/assets/logo.png" />
+      </Box>
 
       {renderAccount}
 
@@ -125,21 +129,16 @@ export default function Nav({ openNav, onCloseNav }) {
   );
 }
 
-Nav.propTypes = {
-  openNav: PropTypes.bool,
-  onCloseNav: PropTypes.func,
-};
-
 // ----------------------------------------------------------------------
 
-function NavItem({ item }) {
+function NavItem({ item }: { item: any }) {
   const pathname = usePathname();
 
   const active = item.path === pathname;
 
   return (
     <ListItemButton
-      component={RouterLink}
+      component={RouterLink as any}
       href={item.path}
       sx={{
         minHeight: 44,
@@ -166,7 +165,3 @@ function NavItem({ item }) {
     </ListItemButton>
   );
 }
-
-NavItem.propTypes = {
-  item: PropTypes.object,
-};
