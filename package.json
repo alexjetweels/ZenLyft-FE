@@ -45,9 +45,7 @@
     "react-router-dom": "^6.16.0",
     "simplebar-react": "^3.2.4",
     "vite": "^4.4.11",
-    "vite-plugin-checker": "^0.6.2",
-    "vite-plugin-svgr": "^4.2.0",
-    "vite-svg-loader": "^5.1.0"
+    "vite-plugin-checker": "^0.6.2"
   },
   "devDependencies": {
     "@types/node": "^20.14.11",

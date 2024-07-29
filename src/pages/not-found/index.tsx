@@ -7,9 +7,6 @@ import Typography from '@mui/material/Typography';
 
 import { RouterLink } from 'src/routes/components';
 
-import LogoImage from 'src/assets/logo.png';
-import Icon404 from 'src/assets/illustrations/illustration_404.svg?react';
-
 // ----------------------------------------------------------------------
 
 export default function NotFoundPage() {
@@ -31,7 +28,7 @@ export default function NotFoundPage() {
             p: (theme) => ({ xs: theme.spacing(3, 3, 0), sm: theme.spacing(5, 5, 0) }),
           }}
         >
-          <img width={80} height={80} alt="Zenlyft" src={LogoImage} />
+          <img width={80} height={80} alt="Zenlyft" src="/assets/logo.png" />
         </Box>
 
         <Container>
@@ -58,22 +55,14 @@ export default function NotFoundPage() {
             </Typography>
 
             <Box
+              component="img"
+              src="/assets/illustrations/illustration_404.svg"
               sx={{
-                // width: {
-                //   sm: 240,
-                //   xs: 480,
-                // },
-                // height: {
-                //   sm: 180,
-                //   xs: 360,
-                // },
-                width: 480,
-                height: 360,
-                marginBottom: 5,
+                mx: 'auto',
+                height: 260,
+                my: { xs: 5, sm: 10 },
               }}
-            >
-              <Icon404 title="not found" width="100%" height="100%" />
-            </Box>
+            />
 
             <Button href="/" size="large" variant="contained" component={RouterLink}>
               Go to Home
