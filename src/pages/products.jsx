@@ -8,7 +8,7 @@ export default function ProductsPage() {
   return (
     <>
       <Helmet>
-        <title> Products | NextGenLife </title>
+        <title> Products | Zenlyft </title>
       </Helmet>
 
       <ProductsView />
