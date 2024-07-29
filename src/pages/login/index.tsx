@@ -81,7 +81,7 @@ export default function LoginPage() {
         sx={{
           ...bgGradient({
             color: alpha(theme.palette.background.default, 0.9),
-            imgUrl: '/assets/background/overlay_4.jpg',
+            imgUrl: '/src/assets/background/overlay_4.jpg',
           }),
           height: 1,
         }}

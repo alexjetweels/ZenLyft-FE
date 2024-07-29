@@ -1,3 +1,4 @@
+import { keyframes } from '@emotion/react';
 import { Helmet } from 'react-helmet-async';
 
 import Box from '@mui/material/Box';
@@ -7,16 +8,35 @@ import Typography from '@mui/material/Typography';
 
 import { RouterLink } from 'src/routes/components';
 
-import LogoImage from 'src/assets/logo.png';
-import Icon404 from 'src/assets/illustrations/illustration_404.svg?react';
+import Logo from 'src/assets/logo.png';
+import Illustration403 from 'src/assets/illustrations/illustration_403.svg?react';
 
 // ----------------------------------------------------------------------
+
+// Define keyframes for the bounce animation
+const fadeInScaleUp = keyframes`
+  0% {
+    opacity: 0;
+    transform: scale(0);
+  }
+  60% {
+    opacity: 1.0;
+    transform: scale(1.3), translateY(-30px);
+  }
+  80% {
+    opacity: 1.0;
+    transform: scale(1.3), translateY(30px);
+  }
+  100% {
+    opacity: 1.0;
+    transform: scale(1), translateY(0);
+`;
 
 export default function NotFoundPage() {
   return (
     <>
       <Helmet>
-        <title> 404 Page Not Found </title>
+        <title> 403 Permission Denied </title>
       </Helmet>
 
       <>
@@ -31,7 +51,7 @@ export default function NotFoundPage() {
             p: (theme) => ({ xs: theme.spacing(3, 3, 0), sm: theme.spacing(5, 5, 0) }),
           }}
         >
-          <img width={80} height={80} alt="Zenlyft" src={LogoImage} />
+          <img width={80} height={80} alt="Zenlyft" src={Logo} />
         </Box>
 
         <Container>
@@ -49,30 +69,20 @@ export default function NotFoundPage() {
             }}
           >
             <Typography variant="h3" sx={{ mb: 3 }}>
-              Sorry, page not found!
+              Permission denied
             </Typography>
-
             <Typography sx={{ color: 'text.secondary' }}>
-              Sorry, we couldn’t find the page you’re looking for. Perhaps you’ve mistyped the URL?
-              Be sure to check your spelling.
+              You do not have permission to access this page.
             </Typography>
-
             <Box
               sx={{
-                // width: {
-                //   sm: 240,
-                //   xs: 480,
-                // },
-                // height: {
-                //   sm: 180,
-                //   xs: 360,
-                // },
-                width: 480,
-                height: 360,
-                marginBottom: 5,
+                mx: 'auto',
+                height: 260,
+                my: { xs: 5, sm: 10 },
+                animation: `${fadeInScaleUp} 1s`,
               }}
             >
-              <Icon404 title="not found" width="100%" height="100%" />
+              <Illustration403 height={260} width={260} />
             </Box>
 
             <Button href="/" size="large" variant="contained" component={RouterLink}>

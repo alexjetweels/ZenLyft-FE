@@ -13,6 +13,7 @@ import { RouterLink } from 'src/routes/components';
 
 import { useResponsive } from 'src/hooks/use-responsive';
 
+import Logo from 'src/assets/logo.png';
 import { account } from 'src/_mock/account';
 
 import Scrollbar from 'src/components/scrollbar';
@@ -83,7 +84,7 @@ export default function Nav({ openNav, onCloseNav }: NavProps) {
       }}
     >
       <Box sx={{ display: 'flex', justifyContent: 'center' }}>
-        <img width={80} height={80} alt="Zenlyft" src="/assets/logo.png" />
+        <img width={80} height={80} alt="Zenlyft" src={Logo} />
       </Box>
 
       {renderAccount}
