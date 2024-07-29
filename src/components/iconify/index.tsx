@@ -7,6 +7,7 @@ import Box from '@mui/material/Box';
 
 interface IconifyProps {
   icon: string | IconifyIcon;
+  color?: string;
   width?: number;
   sx?: object;
 }
