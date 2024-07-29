@@ -15,7 +15,10 @@ import AccountPopover from './common/account-popover';
 import LanguagePopover from './common/language-popover';
 import NotificationsPopover from './common/notifications-popover';
 
-export default function Header() {
+interface HeaderProps {
+  setOpenNav: (open: boolean) => void;
+}
+export default function Header({ setOpenNav }: HeaderProps) {
   const theme = useTheme();
 
   const lgUp = useResponsive('up', 'lg');
@@ -23,7 +26,7 @@ export default function Header() {
   const renderContent = (
     <>
       {!lgUp && (
-        <IconButton sx={{ mr: 1 }}>
+        <IconButton sx={{ mr: 1 }} onClick={() => setOpenNav(true)}>
           <Iconify icon="eva:menu-2-fill" />
         </IconButton>
       )}

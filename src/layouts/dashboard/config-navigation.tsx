@@ -33,6 +33,11 @@ const navConfig = [
   //   icon: icon('ic_lock'),
   // },
   {
+    title: 'Kanban',
+    path: '/kanban',
+    icon: icon('ic_kanban'),
+  },
+  {
     title: 'Not found',
     path: '/404',
     icon: icon('ic_disabled'),
