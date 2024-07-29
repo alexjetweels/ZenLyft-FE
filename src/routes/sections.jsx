@@ -14,6 +14,7 @@ export const ProductsPage = lazy(() => import('src/pages/products'));
 export const Page404 = lazy(() => import('src/pages/errors/404'));
 export const Page403 = lazy(() => import('src/pages/errors/403'));
 export const Page500 = lazy(() => import('src/pages/errors/500'));
+export const Kanban = lazy(() => import('src/pages/kanban'));
 
 // ----------------------------------------------------------------------
 
@@ -46,6 +47,7 @@ export default function Router() {
         },
         { path: 'products', element: <ProductsPage /> },
         { path: 'blog', element: <BlogPage /> },
+        { path: routePath.KANBAN, element: <Kanban /> },
       ],
     },
     {

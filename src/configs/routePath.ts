@@ -5,6 +5,8 @@ const routePath = {
   PERMISSION_DENIED: '/403',
   DASHBOARD: '/dashboard',
   SERVER_ERROR: '/500',
+
+  KANBAN: '/kanban',
 };
 
 export default routePath;
