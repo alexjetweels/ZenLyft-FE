@@ -11,6 +11,7 @@ import Iconify from 'src/components/iconify/index';
 
 import { NAV, HEADER } from './config-layout';
 import SearchModal from './common/SearchModal';
+import MusicPlayer from './common/music-player';
 import AccountPopover from './common/account-popover';
 import LanguagePopover from './common/language-popover';
 import NotificationsPopover from './common/notifications-popover';
@@ -35,6 +36,7 @@ export default function Header({ setOpenNav }: HeaderProps) {
 
       <Stack direction="row" alignItems="center" spacing={1}>
         <SearchModal />
+        <MusicPlayer />
         <LanguagePopover />
         <NotificationsPopover />
         <AccountPopover />

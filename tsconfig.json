@@ -15,6 +15,7 @@
       "src/*": ["./src/*"]
     },
     "noEmit": true,
+    "resolveJsonModule": true,
     "allowImportingTsExtensions": true,
     "types": ["./node_modules/user-agent-data-types"]
   },
