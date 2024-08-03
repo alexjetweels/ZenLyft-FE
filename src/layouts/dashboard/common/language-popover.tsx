@@ -28,9 +28,9 @@ const LANGS = [
 // ----------------------------------------------------------------------
 
 export default function LanguagePopover() {
-  const [open, setOpen] = useState(null);
+  const [open, setOpen] = useState<HTMLButtonElement | null>(null);
 
-  const handleOpen = (event) => {
+  const handleOpen = (event: React.MouseEvent<HTMLButtonElement>) => {
     setOpen(event.currentTarget);
   };
 
@@ -45,9 +45,11 @@ export default function LanguagePopover() {
         sx={{
           width: 40,
           height: 40,
-          ...(open && {
-            bgcolor: 'action.selected',
-          }),
+          ...(open
+            ? {
+                bgcolor: 'action.selected',
+              }
+            : {}),
         }}
       >
         <img src={LANGS[0].icon} alt={LANGS[0].label} />
