@@ -1,4 +1,5 @@
 import { useState } from 'react';
+import Lottie from 'lottie-react';
 
 import Box from '@mui/material/Box';
 import Avatar from '@mui/material/Avatar';
@@ -9,6 +10,7 @@ import MenuItem from '@mui/material/MenuItem';
 import Typography from '@mui/material/Typography';
 import IconButton from '@mui/material/IconButton';
 
+import rank1 from 'src/lotties/rank_1.json';
 import { account } from 'src/_mock/account';
 
 // ----------------------------------------------------------------------
@@ -48,6 +50,7 @@ export default function AccountPopover() {
         sx={{
           width: 40,
           height: 40,
+          marginRight: 10,
           background: (theme) => alpha(theme.palette.grey[500], 0.08),
           ...(anchorEl
             ? {
@@ -57,17 +60,39 @@ export default function AccountPopover() {
             : {}),
         }}
       >
-        <Avatar
-          src={account.photoURL}
-          alt={account.displayName}
+        <Box
           sx={{
-            width: 36,
-            height: 36,
-            border: (theme) => `solid 2px ${theme.palette.background.default}`,
+            position: 'relative',
           }}
         >
-          {account.displayName.charAt(0).toUpperCase()}
-        </Avatar>
+          <Box
+            sx={{
+              position: 'absolute',
+              bottom: -25,
+              left: -23,
+              zIndex: 0,
+              width: 80,
+              height: 80,
+              display: 'flex',
+              alignItems: 'center',
+              justifyContent: 'center',
+            }}
+          >
+            <Lottie autoPlay initialSegment={[0, 1]} loop={false} animationData={rank1} />
+          </Box>
+
+          <Avatar
+            src={account.photoURL}
+            alt={account.displayName}
+            sx={{
+              width: 36,
+              height: 36,
+              border: (theme) => `solid 2px ${theme.palette.background.default}`,
+            }}
+          >
+            {account.displayName.charAt(0).toUpperCase()}
+          </Avatar>
+        </Box>
       </IconButton>
 
       <Popover
