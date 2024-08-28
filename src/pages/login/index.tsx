@@ -20,15 +20,20 @@ import { bgGradient } from 'src/theme/css';
 
 import Iconify from 'src/components/iconify';
 
+import { useLoginWithEmail } from './hooks/useLoginWithEmail';
+
 export default function LoginPage() {
   const theme = useTheme();
-
   const router = useRouter();
+  const { mutate, isPending } = useLoginWithEmail();
 
   const [showPassword, setShowPassword] = useState(false);
 
   const handleClick = () => {
-    router.push('/dashboard');
+    mutate({
+      email: 'john.doe@sexample.com',
+      password: 'secret',
+    });
   };
 
   const renderForm = (
@@ -65,6 +70,8 @@ export default function LoginPage() {
         variant="contained"
         color="inherit"
         onClick={handleClick}
+        loading={isPending}
+        disabled={isPending}
       >
         Login
       </LoadingButton>

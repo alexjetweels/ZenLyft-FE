@@ -2,6 +2,8 @@ import { useState } from 'react';
 
 import Box from '@mui/material/Box';
 
+import { useGetMe } from 'src/hooks/useGetMe';
+
 import Nav from './nav';
 import Main from './main';
 import Header from './header';
@@ -10,6 +12,10 @@ import Header from './header';
 
 export default function DashboardLayout({ children }: { children: React.ReactNode }) {
   const [openNav, setOpenNav] = useState(false);
+
+  const { data, isLoading } = useGetMe();
+
+  console.log(data);
 
   return (
     <>
