@@ -1,5 +1,8 @@
+import * as z from 'zod';
 import { useState } from 'react';
+import { useForm } from 'react-hook-form';
 import { Helmet } from 'react-helmet-async';
+import { zodResolver } from '@hookform/resolvers/zod';
 
 import Box from '@mui/material/Box';
 import Link from '@mui/material/Link';
@@ -22,6 +25,14 @@ import Iconify from 'src/components/iconify';
 
 import { useLoginWithEmail } from './hooks/useLoginWithEmail';
 
+// Define the schema using Zod
+const schema = z.object({
+  email: z.string().email('Invalid email address'),
+  password: z.string().min(5, 'Password must be at least 5 characters long'),
+});
+
+type FormData = z.infer<typeof schema>;
+
 export default function LoginPage() {
   const theme = useTheme();
   const router = useRouter();
@@ -29,22 +40,36 @@ export default function LoginPage() {
 
   const [showPassword, setShowPassword] = useState(false);
 
-  const handleClick = () => {
-    mutate({
-      email: 'john.doe@sexample.com',
-      password: 'secret',
-    });
+  const {
+    register,
+    handleSubmit,
+    formState: { errors },
+  } = useForm<FormData>({
+    resolver: zodResolver(schema),
+  });
+
+  const onSubmit = (data: FormData) => {
+    mutate(data);
   };
 
   const renderForm = (
-    <>
+    <form onSubmit={handleSubmit(onSubmit)}>
       <Stack spacing={3}>
-        <TextField name="email" label="Email address" />
+        <TextField
+          {...register('email')}
+          name="email"
+          label="Email address"
+          error={Boolean(errors.email)}
+          helperText={errors.email?.message}
+        />
 
         <TextField
+          {...register('password')}
           name="password"
           label="Password"
           type={showPassword ? 'text' : 'password'}
+          error={!!errors.password}
+          helperText={errors.password?.message}
           InputProps={{
             endAdornment: (
               <InputAdornment position="end">
@@ -69,13 +94,12 @@ export default function LoginPage() {
         type="submit"
         variant="contained"
         color="inherit"
-        onClick={handleClick}
         loading={isPending}
         disabled={isPending}
       >
         Login
       </LoadingButton>
-    </>
+    </form>
   );
 
   return (
