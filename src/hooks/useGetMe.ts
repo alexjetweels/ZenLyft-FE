@@ -7,4 +7,5 @@ export const useGetMe = () =>
   useQuery({
     queryKey: [QUERY_KEY.ME],
     queryFn: getMe,
+    staleTime: Infinity,
   });

@@ -12,8 +12,7 @@ import Header from './header';
 
 export default function DashboardLayout({ children }: { children: React.ReactNode }) {
   const [openNav, setOpenNav] = useState(false);
-
-  const { data } = useGetMe();
+  useGetMe();
 
   return (
     <>

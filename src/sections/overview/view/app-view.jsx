@@ -4,6 +4,8 @@ import Container from '@mui/material/Container';
 import Grid from '@mui/material/Unstable_Grid2';
 import Typography from '@mui/material/Typography';
 
+import { useGetMe } from 'src/hooks/useGetMe';
+
 import Iconify from 'src/components/iconify';
 
 import AppTasks from '../app-tasks';
@@ -19,10 +21,15 @@ import AppConversionRates from '../app-conversion-rates';
 // ----------------------------------------------------------------------
 
 export default function AppView() {
+  const { data } = useGetMe();
+
   return (
     <Container maxWidth="xl">
       <Typography variant="h4" sx={{ mb: 5 }}>
-        Hi, Welcome back 👋
+        Hi, {data?.firstName} {data?.lastName} 👋{' '}
+        <Typography variant="h6" sx={{ fontWeight: 500 }}>
+          Let&rsquo;s finish your task today
+        </Typography>
       </Typography>
 
       <Grid container spacing={3}>
