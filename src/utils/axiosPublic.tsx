@@ -11,7 +11,7 @@ const axiosPublic = axios.create({
 axiosPublic.interceptors.response.use(
   (res) => res,
   (error: AxiosError<CommonError>) => {
-    toast.error(error.response?.data?.message || 'Something went wrong');
+    toast.error(error.response?.data?.errors || 'Something went wrong');
     return Promise.reject(error);
   }
 );
